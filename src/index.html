@@ -6,9 +6,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./styles.css" />
-  <title>Document</title>
+  <title>TIMFLIX</title>
 </head>
 <body>
+  <header class="header js-header">
+    <div class="header__title">
+      <h1 class="header__title--logo">
+        TIMFLIX
+      </h1>
+    </div>
+  </header>
+  <main class="main js-main">
+    <video class="js-video" controls src="https://gcs-vimeo.akamaized.net/exp=1527958833~acl=%2A%2F478252622.mp4%2A~hmac=931a6b4e02cb5850d209319534f96fc849af7ca504a53e2df2e31896f9fa30dc/vimeo-prod-skyfire-std-us/01/938/6/154691030/478252622.mp4"></video>
+    <div class="js-video__controls">
+      <button class="js-playBtn">
+        <i class="fas fa-play"></i>
+      </button>
+      <button class="js-muteBtn">
+        <i class="fas fa-volume-off fa-lg"></i>
+      </button>
+      <input type="range" min="0" max="1" step="0.01" class="js-range" />
+    </div>
+  </main>
   <script src="./index.js"></script>
 </body>
 </html>

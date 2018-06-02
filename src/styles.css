@@ -1,3 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
+@import "css/reset.css";
 body {
-  background-color: green;
+  height: 300vh;
+}
+
+.js-header {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  background-color: transparent;
+  transition: background-color 0.5s linear;
+}
+
+.black {
+  background-color: black;
+}
+
+.js-header .header__title {
+  color: red;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.main .js-video {
+  width: 100%;
 }
