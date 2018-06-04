@@ -2,9 +2,13 @@ const header = document.querySelector(".js-header"),
   video = document.querySelector(".js-video"),
   muteBtn = document.querySelector(".js-muteBtn"),
   playBtn = document.querySelector(".js-playBtn"),
-  range = document.querySelector(".js-range");
+  range = document.querySelector(".js-range"),
+  volume = document.querySelector(".js-volume"),
+  boxes = document.querySelectorAll(".box");
 
-video.play();
+const boxList = Array.from(boxes);
+
+video.autoplay = true;
 video.loop = true;
 
 const handleResetContent = () => {
@@ -23,7 +27,7 @@ const loadMutePreference = () => {
   if (mutedPref !== null) {
     if (mutedPref === "true") {
       video.muted = true;
-      muteBtn.innerHTML = `<i class="fas fa-volume-off"></i>`;
+      muteBtn.innerHTML = `<i class="fas fa-volume-off fa-lg"></i>`;
     } else {
       video.muted = false;
       video.volume = volumePref;
@@ -32,7 +36,7 @@ const loadMutePreference = () => {
     }
   } else {
     video.muted = true;
-    muteBtn.innerHTML = `<i class="fas fa-volume-off"></i>`;
+    muteBtn.innerHTML = `<i class="fas fa-volume-off fa-lg"></i>`;
   }
 };
 
@@ -61,7 +65,7 @@ const handleMuteBtnClick = () => {
   } else {
     range.value = "0";
     video.muted = true;
-    muteBtn.innerHTML = `<i class="fas fa-volume-off"></i>`;
+    muteBtn.innerHTML = `<i class="fas fa-volume-off fa-lg"></i>`;
     localStorage.setItem("muted", true);
   }
 };
@@ -79,10 +83,81 @@ const handlePlayBtnClick = event => {
 const handleRangeChange = event => {
   const currentVolume = event.target.value;
   video.volume = currentVolume;
-  video.muted = false;
-  muteBtn.innerHTML = `<i class="fas fa-volume-up"></i>`;
-  localStorage.setItem("volume", video.volume);
+  if (currentVolume === "0") {
+    video.muted = true;
+    muteBtn.innerHTML = `<i class="fas fa-volume-off fa-lg"></i>`;
+    localStorage.setItem("muted", true);
+  } else {
+    video.muted = false;
+    muteBtn.innerHTML = `<i class="fas fa-volume-up"></i>`;
+    localStorage.setItem("volume", video.volume);
+  }
 };
+
+const handleVolumeHover = event => {
+  range.classList.add("showing");
+};
+
+const handleVolumeLeave = event => {
+  range.classList.remove("showing");
+};
+
+const findAllNext = element => {
+  const foundList = [];
+  const findNext = element => {
+    if (element !== null) {
+      foundList.push(element);
+      const nextElement = element.nextElementSibling;
+      if (nextElement !== null) {
+        findNext(nextElement);
+      }
+    }
+  };
+  findNext(element.nextElementSibling);
+  return foundList;
+};
+
+const findAllprevious = element => {
+  const foundList = [];
+  const findPrevious = element => {
+    if (element !== null) {
+      foundList.push(element);
+      const previousElement = element.previousElementSibling;
+      if (previousElement !== null) {
+        findPrevious(previousElement);
+      }
+    }
+  };
+  findPrevious(element.previousElementSibling);
+  return foundList;
+};
+
+const handleBoxMouseOver = event => {
+  const target = event.target;
+  const nextElements = findAllNext(target);
+  const previousElements = findAllprevious(target);
+  nextElements.forEach(element => {
+    element.classList.add("next");
+  });
+  previousElements.forEach(element => {
+    element.classList.add("previous");
+  });
+};
+
+const handleBoxMouseLeave = event => {
+  const { target } = event;
+  boxList.forEach(box => {
+    box.classList.remove("next", "previous");
+  });
+};
+
+boxList.forEach(box => {
+  box.addEventListener("mouseover", handleBoxMouseOver);
+  box.addEventListener("mouseleave", handleBoxMouseLeave);
+});
+
+volume.addEventListener("mouseover", handleVolumeHover);
+volume.addEventListener("mouseleave", handleVolumeLeave);
 muteBtn.addEventListener("click", handleMuteBtnClick);
 playBtn.addEventListener("click", handlePlayBtnClick);
 range.addEventListener("change", handleRangeChange);

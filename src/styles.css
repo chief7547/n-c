@@ -1,28 +1,37 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
 @import "css/reset.css";
+@import "css/header.css";
+@import "css/range.css";
+@import "css/main-video.css";
 body {
   height: 300vh;
-}
-
-.js-header {
-  z-index: 2;
-  position: fixed;
-  width: 100%;
-  height: 70px;
-  background-color: transparent;
-  transition: background-color 0.5s linear;
-}
-
-.black {
   background-color: black;
 }
 
-.js-header .header__title {
-  color: red;
-  font-size: 26px;
-  font-weight: 600;
+.js-video__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 400px;
+  grid-gap: 20px;
+  /* position: absolute;
+  bottom: 100px; */
 }
 
-.main .js-video {
-  width: 100%;
+.box {
+  z-index: 1;
+  display: flex;
+  background-color: #f1c40f;
+  transition: transform 0.2s linear;
+}
+
+.box:hover {
+  transform: scale(1.3);
+}
+
+.next {
+  transform: translateX(40px);
+}
+
+.previous {
+  transform: translateX(-40px);
 }

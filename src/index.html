@@ -10,23 +10,56 @@
 </head>
 <body>
   <header class="header js-header">
-    <div class="header__title">
-      <h1 class="header__title--logo">
-        TIMFLIX
-      </h1>
+    <div class="header__top">
+      <div class="header__title">
+        <h1 class="header__title--logo">TIMFLIX</h1>
+      </div>
+      <div class="header__contents">
+        <div class="header__content">Home</div>
+        <div class="header__content">Tv Show</div>
+        <div class="header__content">Movies</div>
+        <div class="header__content">Originals</div>
+        <div class="header__content">Recently Added</div>
+        <div class="header__content">My List</div>
+      </div>
+      <div class="header__icons">
+        <div class="header__searchbar">
+          <i class="fas fa-search fa-lg"></i>
+        </div>
+        <div class="header__notification">
+          <i class="fas fa-bell fa-lg"></i>
+        </div>
+        <div class="header__user">
+          <i class="fas fa-user-circle fa-2x"></i>
+          <i class="fas fa-caret-down"></i>
+        </div>
+      </div>
     </div>
   </header>
   <main class="main js-main">
-    <video class="js-video" controls src="https://gcs-vimeo.akamaized.net/exp=1527958833~acl=%2A%2F478252622.mp4%2A~hmac=931a6b4e02cb5850d209319534f96fc849af7ca504a53e2df2e31896f9fa30dc/vimeo-prod-skyfire-std-us/01/938/6/154691030/478252622.mp4"></video>
-    <div class="js-video__controls">
-      <button class="js-playBtn">
-        <i class="fas fa-play"></i>
-      </button>
-      <button class="js-muteBtn">
-        <i class="fas fa-volume-off fa-lg"></i>
-      </button>
-      <input type="range" min="0" max="1" step="0.01" class="js-range" />
-    </div>
+    <video class="js-video" src="http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"></video>
+
+    <section class="js-video__controls">
+      <div class="js-play">
+        <button class="js-playBtn">
+          <i class="fas fa-pause"></i>
+        </button>
+      </div>
+      <div class="js-volume">
+        <button class="js-muteBtn">
+          <i class="fas fa-volume-off fa-lg"></i>
+        </button>
+        <input type="range" min="0" max="1" step="0.01" class="js-range" />
+      </div>
+    </section>
+
+    <section class="js-video__list">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </section>
   </main>
   <script src="./index.js"></script>
 </body>
