@@ -11,9 +11,9 @@
   grid-template-rows: 45px 45px;
   grid-gap: 15px;
   flex-direction: column;
-  bottom: 250px;
+  bottom: 400px;
   z-index: 1;
-  margin-left: 70px;
+  margin-left: 100px;
 }
 
 .js-video__controls button {
