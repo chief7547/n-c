@@ -35,6 +35,8 @@ module.exports = {
     new CleanWebpackPlugin(PATHS.build, {
       root: process.cwd()
     }),
-    new ExtractWebpackPlugin("styles.css")
+    new ExtractWebpackPlugin({
+        filename: "styles.css"
+    })
   ]
 };
