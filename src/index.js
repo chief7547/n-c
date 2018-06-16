@@ -1,15 +1,40 @@
+import css from "./styles.css";
+
 const header = document.querySelector(".js-header"),
   video = document.querySelector(".js-video"),
   muteBtn = document.querySelector(".js-muteBtn"),
   playBtn = document.querySelector(".js-playBtn"),
   range = document.querySelector(".js-range"),
   volume = document.querySelector(".js-volume"),
-  boxes = document.querySelectorAll(".box");
+  boxes = document.querySelectorAll(".box"),
+  speechBtn = document.querySelector(".js-searchBtn"),
+  textBox = document.querySelector(".js-searchBox")
 
 const boxList = Array.from(boxes);
 
 video.autoplay = true;
 video.loop = true;
+
+window.SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const speech = new window.SpeechRecognition();
+speech.lang = "en";
+speech.interimResults = false;
+
+const startRecording = () => {
+  speech.start();
+}
+
+const handleResults = (event) => {
+  const transcript = event.results[0][0].transcript;
+  textBox.value += (" " + transcript);
+}
+
+speech.addEventListener("end", startRecording);
+speech.addEventListener("result", handleResults);
+speechBtn.addEventListener("click", startRecording);
+
 
 const handleResetContent = () => {
   const mutedPref = localStorage.getItem("muted");

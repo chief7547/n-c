@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./styles.css" />
   <title>TIMFLIX</title>
 </head>
 <body>
@@ -22,9 +21,14 @@
         <div class="header__content">Recently Added</div>
         <div class="header__content">My List</div>
       </div>
-      <div class="header__icons">
+      <div class="header__nav">
+        <div class="header__search-textbox">
+          <input type="text" class="js-searchBox"placeholder="">
+        </div>
         <div class="header__searchbar">
+          <button class="js-searchBtn" type="button" name="button">
           <i class="fas fa-search fa-lg"></i>
+          </button>
         </div>
         <div class="header__notification">
           <i class="fas fa-bell fa-lg"></i>
@@ -37,7 +41,7 @@
     </div>
   </header>
   <main class="main js-main">
-    <video class="js-video" src="http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"></video>
+    <video class="js-video" src="https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c0/Big_Buck_Bunny_4K.webm/Big_Buck_Bunny_4K.webm.480p.webm"></video>
 
     <section class="js-video__controls">
       <div class="js-play">
@@ -65,6 +69,5 @@
       </div>
     </section>
     </main>
-  <script src="./index.js"></script>
 </body>
 </html>
